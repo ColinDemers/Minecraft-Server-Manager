@@ -30,9 +30,8 @@ class MainWindow(QMainWindow):
    def load_servers(self):
        subfolders = [os.path.basename(f.path) for f in os.scandir(os.getcwd()) if f.is_dir()]
        for folder in subfolders:
-           if folder != '__pycache__':
-               if folder != 'backups':
-                   self.servers.append(folder)
+           if os.path.exists(os.path.join(os.getcwd(), folder, 'backend.json')):
+               self.servers.append(folder)
 
        if len(self.servers) == 0:
            self.create_server_tab()
