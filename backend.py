@@ -3,7 +3,7 @@ import subprocess
 import os
 import sys
 import requests
-import urllib.request
+import urllib
 import time
 import threading
 import json
@@ -208,8 +208,8 @@ def update(server, type='paper'):
        else:
            logging.debug(f'Failed to download file: {response.status_code}')
 
-   shutil.move(tempPath, os.path.join(os.path.join(os.getcwd(), server), f'{server}.jar'))
-   logging.debug(f'File moved to permanent location: {os.path.join(os.path.join(os.getcwd(), server), f'{server}.jar')}')
+   shutil.move(tempPath, os.path.join(os.getcwd(), server, f"{server}.jar"))
+   logging.debug(f'File moved to permanent location: {os.path.join(os.getcwd(), server, f"{server}.jar")}')
 
    if os.path.exists(tempPath):
        os.remove(tempPath)
@@ -230,8 +230,8 @@ def update(server, type='paper'):
                else:
                    logging.debug(f'Failed to download file: {response.status_code}')
 
-               shutil.move(tempPath, os.path.join(os.path.join(os.getcwd(), server, 'plugins'), f'playit.jar'))
-               logging.debug(f'File moved to permanent location: {os.path.join(os.path.join(os.getcwd(), server, 'plugins'), f'playit.jar')}')
+               shutil.move(tempPath, os.path.join(os.getcwd(), server, 'plugins', 'playit.jar'))
+               logging.debug(f'File moved to permanent location: {os.path.join(os.getcwd(), server, "plugins", "playit.jar")}')
 
                if os.path.exists(tempPath):
                    os.remove(tempPath)
@@ -305,8 +305,8 @@ def bedrock(server):
            else:
                logging.debug(f'Failed to download file: {response.status_code}')
 
-           shutil.move(tempPath, os.path.join(os.path.join(os.getcwd(), server, 'plugins'), f'{plugin}.jar'))
-           logging.debug(f'File moved to permanent location: {os.path.join(os.path.join(os.getcwd(), server, 'plugins'), f'{plugin}.jar')}')
+           shutil.move(tempPath, os.path.join(os.getcwd(), server, "plugins", f"{plugin}.jar"))
+           logging.debug(f'File moved to permanent location: {os.path.join(os.getcwd(), server, "plugins", f"{plugin}.jar")}')
 
            if os.path.exists(tempPath):
                os.remove(tempPath)
